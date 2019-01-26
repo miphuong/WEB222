@@ -1,0 +1,27 @@
+<div class="row">     
+    <div class="col-md-12 tableresponsive">           
+        <h2>Departments <a href="/departments/add" class="btn btn-success pull-right">Add New Department</a> </h2>           
+        <hr /> 
+        
+        <!--TODO: render a list of all department id's and names here</p> -->
+        <table class="table">
+                <tr>
+                    <th>Department Number</th>
+                    <th>Department Name</th>
+                </tr>
+            {{#each departments}}
+                <tr>
+                    <td> <a href="/employees?department={{departmentId}}"> {{departmentId}} </a> </td>
+                    <!-- <td> <a href="/employees?department={{this.departmentId}}"> {{this.departmentName}} </a> </td> -->
+                    <td> <a href="/department/{{departmentId}}">{{departmentName}} </a> </td> 
+                </tr>
+            {{/each}}
+        </table>
+ 
+    </div> 
+    {{#unless departments}}
+        <div class="col-md-12 text-center">             
+            <strong>{{message}}</strong> 
+        </div> 
+    {{/unless}}
+</div> 

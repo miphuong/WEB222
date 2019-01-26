@@ -1,0 +1,144 @@
+<div class="row">     
+    <div class="col-md-12"> 
+        {{#each viewData.employee}}
+            <h2>{{firstName}} {{lastName}} - Employee: {{employeeNum}}</h2>   
+        
+        <hr /> 
+        <form method="post" action="/employee/update">    
+
+            <input type="hidden" name="employeeNum" value="{{employeeNum}}" />
+
+            <fieldset>          
+                   
+                <legend>Personal Information</legend>                 
+                <div class="row">                     
+                    <div class="col-md-6">                         
+                        <div class="form-group">                             
+                            <label for="firstName">First Name:</label>                             
+                            <input class="form-control" id="firstName" name="firstName" type="text" value="{{firstName}}" />                         
+                        </div>                     
+                    </div>                     
+                    <div class="col-md-6">                         
+                        <div class="form-group">                             
+                            <label for="lastName">Last Name:</label>                             
+                            <input class="form-control" id="lastName" name="lastName" type="text" value="{{lastName}}" />                         
+                        </div>                     
+                    </div>                 
+                </div>    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                            <label for="email">Email:</label>
+                            <input class="form-control" id="email" name="email" type="email" value="{{email}}" />     
+                            <!-- <input class="form-control" id="email" name="email" type="text" value="{{ employee.email}}" />                          -->                    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                            <label for="SSN">Social Security Num:</label>
+                            <input class="form-control" id="SSN" name="SSN" type="text" value="{{SSN}}" readonly />                         
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="addressStreet">Address (Street):</label>
+                            <input class="form-control" id="addressStreet" name="addressStreet" type="text" value="{{addressStreet}}" />                         
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="addressCity">Address (City):</label>
+                            <input class="form-control" id="addressCity" name="addressCity" type="text" value="{{addressCity}}" />                         
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="addressState">Address (State):</label>
+                            <input class="form-control" id="addressState" name="addressState" type="text" value="{{addressState}}" />                         
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="addressPostal">Address (Zip Code):</label>
+                            <input class="form-control" id="addressPostal" name="addressPostal" type="text" value="{{addressPostal}}" />                         
+                        </div>
+                    </div>
+                </div>
+                
+            </fieldset>      
+        <!-- put a /each here and itworks-->
+            <fieldset>
+                <legend>Company Information</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="isManager">Manager:</label>
+                            {{#if isManager}}
+                                <input class="form-control" id="isManager" name="isManager" type="checkbox" checked/>
+                            {{else}}
+                                <input class="form-control" id="isManager" name="isManager" type="checkbox" />
+                            {{/if}} 
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="employeeManagerNum">Employee's Manager Number:</label>
+                            <input class="form-control" id="employeeManagerNum" name="employeeManagerNum" type="text" value="{{employeeManagerNum}}" />                         
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Status:</label><br />
+                            {{#equal status "Full Time" }} <!-- viewData.employee.status -->
+                                <label class="checkbox-incline">
+                                    <input type="radio" id="statusFT" name="status" checked value="Full Time" /> Full Time
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" id="statusPT" name="status"  value="Part Time" /> Part Time
+                                </label>
+                            {{else}}
+                                <label class="checkbox-incline">
+                                    <input type="radio" id="statusFT" name="status" value="Full Time" /> Full Time
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" id="statusPT" name="status" checked  value="Part Time" /> Part Time
+                                </label>
+                            {{/equal}}
+                        </div>
+                    </div> 
+        {{/each}}<!-- /each works up to here as well -->            
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label  for="department">Department:</label><br />
+                            {{#if viewData.departments}}      
+                                <select class="form-control" name="department" id="department">      
+                                {{#each viewData.departments}}           
+                                    <option value="{{this.departmentId}}" {{#if selected}} selected {{/if}} >{{departmentName}} </option>    
+                                {{/each}}      
+                                </select> 
+                            {{else}}      
+                                <div>No Departments</div> 
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            {{#each viewData.employee}}  <!-- #each viewData.employee -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="hireDate">Hire Date:</label>
+                            <input class="form-control" id="hireDate" name="hireDate" type="text" value="{{hireDate}}" readonly />                         
+                        </div>
+                    </div>
+                </div>
+            {{/each}}   <!-- /each -->
+            </fieldset>
+            <hr />       
+        
+            <input type="submit" class="btn btn-primary pull-right" value="Update Employee" /><br /><br /><br />         
+        </form>   
+
+    </div> 
+</div>

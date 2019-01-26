@@ -1,0 +1,36 @@
+nav div div {background-color: rgba(127,255,212,0.2);}
+
+nav div span {font-style: italic;
+              font-weight: bold;
+             }
+
+body div div aside h2 {color: red;}
+
+body div div section h2 {font-family: 'Tangerine', cursive;
+                         font-size: 50px;
+                        }
+
+div strong {
+    font-size: 20px;
+    color: red;
+}
+
+#loginErrMsg {
+    color: red;
+    font-size: 20px;
+}
+
+#registerErrMsg {
+    color: red;
+    font-size: 20px;
+}
+
+#login_h1{
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+}
+
+#register_h1{
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+}
